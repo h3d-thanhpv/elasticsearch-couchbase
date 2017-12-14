@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  elasticsearch:
+    build: elasticsearch
+    volumes:
+      - es-data:/usr/share/elasticsearch/data/opt/couchbase/var
+    ports:
+      - "9091:9091"
+      - "9200:9200"
+      - "9300:9300"
+  couchbase:
+    image: couchbase:community-5.0.0
+    volumes:
+      - cb-data:/opt/couchbase/var
+    ports:
+      - "8091-8094:8091-8094"
+      - "18091-18094:18091-18094"
+volumes:
+  es-data:
+  cb-data:
